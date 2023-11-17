@@ -2,6 +2,7 @@ package hello.coretry;
 
 import hello.coretry.discount.DiscountPolicy;
 import hello.coretry.discount.FixDiscountPolicy;
+import hello.coretry.discount.RateDiscountPolicy;
 import hello.coretry.member.MemberRepository;
 import hello.coretry.member.MemberService;
 import hello.coretry.member.MemberServiceImpl;
@@ -26,6 +27,7 @@ public class AppConfig {
     }
 
     public DiscountPolicy discountPolicy() {
-        return new FixDiscountPolicy();
+        //return new FixDiscountPolicy();
+        return new RateDiscountPolicy();
     }
 }
