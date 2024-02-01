@@ -1,11 +1,15 @@
 package hello.coretry.order;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import hello.coretry.discount.DiscountPolicy;
 import hello.coretry.discount.FixDiscountPolicy;
 import hello.coretry.member.Member;
 import hello.coretry.member.MemberRepository;
 import hello.coretry.member.MemoryMemberRepository;
 
+@Component
 public class OrderServiceImpl implements OrderService{
 
     // DIP 원칙을 위반
@@ -14,6 +18,7 @@ public class OrderServiceImpl implements OrderService{
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy){
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
