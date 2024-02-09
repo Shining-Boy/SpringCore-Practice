@@ -8,8 +8,10 @@ import hello.coretry.discount.FixDiscountPolicy;
 import hello.coretry.member.Member;
 import hello.coretry.member.MemberRepository;
 import hello.coretry.member.MemoryMemberRepository;
+import lombok.RequiredArgsConstructor;
 
 @Component
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService{
 
     // DIP 원칙을 위반
@@ -18,11 +20,11 @@ public class OrderServiceImpl implements OrderService{
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy){
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+    // @Autowired
+    // public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy){
+    //     this.memberRepository = memberRepository;
+    //     this.discountPolicy = discountPolicy;
+    // }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
