@@ -3,7 +3,7 @@ package hello.coretry.lifecycle;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
-public class NetworkClient implements InitializingBean, DisposableBean {
+public class NetworkClient /*implements InitializingBean, DisposableBean*/ {
     
     private String url;
 
@@ -31,16 +31,27 @@ public class NetworkClient implements InitializingBean, DisposableBean {
         System.out.println("close: " + url);
     }
 
-    @Override
-    public void destroy() throws Exception {
-        // TODO Auto-generated method stub
-        discoonect();
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        // TODO Auto-generated method stub
+    public void init() {
+        System.out.println("NetworkClient.init");
         connect();
         call("초기화 연결 메시지");
     }
+
+    public void close() {
+        System.out.println("NetworkClient.close");
+        discoonect();
+    }
+
+    // @Override
+    // public void destroy() throws Exception {
+    //     // TODO Auto-generated method stub
+    //     discoonect();
+    // }
+
+    // @Override
+    // public void afterPropertiesSet() throws Exception {
+    //     // TODO Auto-generated method stub
+    //     connect();
+    //     call("초기화 연결 메시지");
+    // }
 }
