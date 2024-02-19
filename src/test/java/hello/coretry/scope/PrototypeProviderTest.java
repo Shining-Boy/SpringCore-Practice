@@ -2,6 +2,7 @@ package hello.coretry.scope;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+//import org.apache.logging.log4j.spi.Provider;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.context.annotation.Scope;
 import hello.coretry.scope.SingletonWithPrototypeTest1.PrototypeBean;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+
+import jakarta.inject.Provider;
 
 public class PrototypeProviderTest {
     
@@ -32,11 +35,13 @@ public class PrototypeProviderTest {
 
         @Autowired
         //private ApplicationContext ac;
-        private ObjectProvider<PrototypeBean> prototypeBeanProvider;
+        //private ObjectProvider<PrototypeBean> prototypeBeanProvider;
+        private Provider<PrototypeBean> provider;
 
         public int logic() {
             //PrototypeBean prototypeBean = ac.getBean(PrototypeBean.class);
-            PrototypeBean prototypeBean = prototypeBeanProvider.getObject();
+            //PrototypeBean prototypeBean = prototypeBeanProvider.getObject();
+            PrototypeBean prototypeBean = provider.get();
             prototypeBean.addCount();
             return prototypeBean.getCount();
         }
