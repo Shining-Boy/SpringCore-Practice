@@ -8,17 +8,20 @@ import hello.coretry.common.MyLogger;
 
 @Service
 public class LogDemoService {
-    //private final MyLogger myLogger;
-    private final ObjectProvider<MyLogger> myLoggerProvider;
+    private final MyLogger myLogger;
+    //private final ObjectProvider<MyLogger> myLoggerProvider;
 
 
-    @Autowired
-    LogDemoService(ObjectProvider<MyLogger> myLoggerProvider){
-        this.myLoggerProvider = myLoggerProvider;
+    // @Autowired
+    // LogDemoService(ObjectProvider<MyLogger> myLoggerProvider){
+    //     this.myLoggerProvider = myLoggerProvider;
+    // }
+    LogDemoService(MyLogger myLogger){
+        this.myLogger = myLogger;
     }
 
     public void logic(String id) {
-        MyLogger myLogger = myLoggerProvider.getObject();
+        //MyLogger myLogger = myLoggerProvider.getObject();
         myLogger.log("service id = " + id);
     }
 }
